@@ -1,0 +1,24 @@
+{
+  "name": "queue.io",
+  "version": "1.0.0",
+  "description": "speed queue js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masksnytko/queue.git"
+  },
+  "keywords": [
+    "speed",
+    "queue",
+    "js"
+  ],
+  "author": "maksim snytko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masksnytko/queue/issues"
+  },
+  "homepage": "https://github.com/masksnytko/queue#readme"
+}
