@@ -1,58 +1,62 @@
 class Queue {
     constructor() {
-        let last, first;
-        this.push = v => {
-            if (last) {
-                last.L = {
-                    v: v,
-                    R: last
+        let last, first, temp;
+        Object.defineProperties(this, {
+            push: {
+                value: v => {
+                    if (last) {
+                        last = last.r = {
+                            v: v,
+                            l: last
+                        }
+                    } else {
+                        last = first = {
+                            v: v
+                        }
+                    }
                 }
-                last = last.L;
-            } else {
-                last = {
-                    v: v
+            },
+            unshift: {
+                value: v => {
+                    if (first) {
+                        first = first.l = {
+                            v: v,
+                            r: first
+                        }
+                    } else {
+                        last = first = {
+                            v: v
+                        }
+                    }
                 }
-                first = last;
+            },
+            pop: {
+                value: () => {
+                    if (last) {
+                        temp = last;
+                        if (first === last) {
+                            first = last = null;
+                        } else {
+                            last = temp.l;
+                        }
+                        return temp.v;
+                    }
+                }
+            },
+            shift: {
+                value: () => {
+                    if (first) {
+                        temp = first;
+                        if (first === last) {
+                            first = last = null;
+                        } else {
+                            first = temp.r;
+                        }
+                        return temp.v;
+                    }
+                }
             }
-        }
-        this.unshift = v => {
-            if (first) {
-                first.R = {
-                    v: v,
-                    L: first
-                }
-                first = first.R;
-            } else {
-                first = {
-                    v: v
-                }
-                last = first;
-            }
-        }
-        this.pop = () => {
-            let v = last;
-            if (v) {
-                if (first === last) {
-                    first = undefined;
-                    last = undefined;
-                } else {
-                    last = v.R;
-                }
-                return v.v;
-            }
-        }
-        this.shift = () => {
-            let v = first;
-            if (v) {
-                if (first === last) {
-                    first = undefined;
-                    last = undefined;
-                } else {
-                    first = v.L;
-                }
-                return v.v;
-            }
-        }
+        });
     }
 }
 
