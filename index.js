@@ -2,31 +2,31 @@ class Queue {
     constructor() {
         let last, first;
         this.push = v => {
-            if (!last) {
-                last = {
-                    v: v
-                }
-                first = last;
-            } else {
+            if (last) {
                 last.L = {
                     v: v,
                     R: last
                 }
-                last = last.L; 
+                last = last.L;
+            } else {
+                last = {
+                    v: v
+                }
+                first = last;
             }
         }
         this.unshift = v => {
-            if (!first) {
-                first = {
-                    v: v
-                }
-                last = first;
-            } else {
+            if (first) {
                 first.R = {
                     v: v,
                     L: first
                 }
-                first = first.R; 
+                first = first.R;
+            } else {
+                first = {
+                    v: v
+                }
+                last = first;
             }
         }
         this.pop = () => {
