@@ -3,33 +3,22 @@
 class Queue {
     constructor() {
         let first = null, last = null, temp = null;
-
         Object.defineProperties(this, {
             push: {
                 value: v => {
-                    if (last !== null) {
-                        last = last.r = {
-                            v: v,
-                            l: last
-                        }
+                    if (first === null) {
+                        first = last = [null, v, null]
                     } else {
-                        last = first = {
-                            v: v
-                        }
+                        last = last[2] = [last, v, null];
                     }
                 }
             },
             unshift: {
                 value: v => {
-                    if (first !== null) {
-                        first = first.l = {
-                            v: v,
-                            r: first
-                        }
+                    if (first === null) {
+                        first = last = [null, v, null]
                     } else {
-                        last = first = {
-                            v: v
-                        }
+                        first = first[0] = [null, val, first];
                     }
                 }
             },
@@ -40,9 +29,9 @@ class Queue {
                         if (first === last) {
                             first = last = null;
                         } else {
-                            last = temp.l;
+                            last = last[0];
                         }
-                        return temp.v;
+                        return temp[1];
                     }
                 }
             },
@@ -53,9 +42,9 @@ class Queue {
                         if (first === last) {
                             first = last = null;
                         } else {
-                            first = temp.r;
+                            first = temp[2];
                         }
-                        return temp.v;
+                        return temp[1];
                     }
                 }
             }
