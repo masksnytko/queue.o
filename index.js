@@ -1,10 +1,13 @@
+'use strict';
+
 class Queue {
     constructor() {
-        let last, first, temp;
+        let first = null, last = null, temp = null;
+
         Object.defineProperties(this, {
             push: {
                 value: v => {
-                    if (last) {
+                    if (last !== null) {
                         last = last.r = {
                             v: v,
                             l: last
@@ -18,7 +21,7 @@ class Queue {
             },
             unshift: {
                 value: v => {
-                    if (first) {
+                    if (first !== null) {
                         first = first.l = {
                             v: v,
                             r: first
@@ -32,7 +35,7 @@ class Queue {
             },
             pop: {
                 value: () => {
-                    if (last) {
+                    if (last !== null) {
                         temp = last;
                         if (first === last) {
                             first = last = null;
@@ -45,7 +48,7 @@ class Queue {
             },
             shift: {
                 value: () => {
-                    if (first) {
+                    if (first !== null) {
                         temp = first;
                         if (first === last) {
                             first = last = null;
