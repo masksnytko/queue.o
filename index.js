@@ -18,7 +18,7 @@ class Queue {
                     if (first === null) {
                         first = last = [null, v, null]
                     } else {
-                        first = first[0] = [null, val, first];
+                        first = first[0] = [null, v, first];
                     }
                 }
             },
