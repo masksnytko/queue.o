@@ -2,12 +2,12 @@
 
 class Queue {
     constructor() {
-        let first = null, last = null, temp = null;
+        let first = null, last = null, temp;
         Object.defineProperties(this, {
             push: {
                 value: v => {
                     if (first === null) {
-                        first = last = [null, v, null]
+                        first = last = [null, v, null];
                     } else {
                         last = last[2] = [last, v, null];
                     }
@@ -16,7 +16,7 @@ class Queue {
             unshift: {
                 value: v => {
                     if (first === null) {
-                        first = last = [null, v, null]
+                        first = last = [null, v, null];
                     } else {
                         first = first[0] = [null, v, first];
                     }
@@ -25,26 +25,26 @@ class Queue {
             pop: {
                 value: () => {
                     if (last !== null) {
-                        temp = last;
+                        temp = last[1];
                         if (first === last) {
                             first = last = null;
                         } else {
                             last = last[0];
                         }
-                        return temp[1];
+                        return temp;
                     }
                 }
             },
             shift: {
                 value: () => {
                     if (first !== null) {
-                        temp = first;
+                        temp = first[1];
                         if (first === last) {
                             first = last = null;
                         } else {
-                            first = temp[2];
+                            first = first[2];
                         }
-                        return temp[1];
+                        return temp;
                     }
                 }
             }
