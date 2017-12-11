@@ -47,6 +47,20 @@ class Queue {
                         return temp;
                     }
                 }
+            },
+            last: {
+                get: () => {
+                    if (last !== null) {
+                        return last[1];
+                    }
+                } 
+            },
+            first: {
+                get: () => {
+                    if (first !== null) {
+                        return first[1];
+                    }
+                } 
             }
         });
     }
