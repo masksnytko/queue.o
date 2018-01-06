@@ -18,4 +18,6 @@ q.pop() //[2]
 q.shift() //[1, 2]
 q.last; //[1, 2]
 q.pop() //undefined
+q.last = 1;
+q.first; //1
 ```
