@@ -2,67 +2,68 @@
 
 class Queue {
     constructor() {
-        let first = null, last = null, temp;
-        Object.defineProperties(this, {
-            push: {
-                value: v => {
-                    if (first === null) {
-                        first = last = [null, v, null];
-                    } else {
-                        last = last[2] = [last, v, null];
-                    }
-                }
-            },
-            unshift: {
-                value: v => {
-                    if (first === null) {
-                        first = last = [null, v, null];
-                    } else {
-                        first = first[0] = [null, v, first];
-                    }
-                }
-            },
-            pop: {
-                value: () => {
-                    if (last !== null) {
-                        temp = last[1];
-                        if (first === last) {
-                            first = last = null;
-                        } else {
-                            last = last[0];
-                        }
-                        return temp;
-                    }
-                }
-            },
-            shift: {
-                value: () => {
-                    if (first !== null) {
-                        temp = first[1];
-                        if (first === last) {
-                            first = last = null;
-                        } else {
-                            first = first[2];
-                        }
-                        return temp;
-                    }
-                }
-            },
-            last: {
-                get: () => {
-                    if (last !== null) {
-                        return last[1];
-                    }
-                } 
-            },
-            first: {
-                get: () => {
-                    if (first !== null) {
-                        return first[1];
-                    }
-                } 
+        this._first = null;
+        this._last = null;
+    }
+    push(v) {
+        if (this._last === null) {
+            this._last = this._first = [null, v, null];
+        } else {
+            this._last = this._last[2] = [this._last, v, null];
+        }
+    }
+    unshift(v) {
+        if (this._first === null) {
+            this._first = this._last = [null, v, null];
+        } else {
+            this._first = this._first[0] = [null, v, this._first];
+        }
+    }
+    pop() {
+        if (this._last !== null) {
+            let temp = this._last[1];
+            if (this._first === this._last) {
+                this._first = this._last = null;
+            } else {
+                this._last = this._last[0];
             }
-        });
+            return temp;
+        }
+    }
+    shift() {
+        if (this.first !== null) {
+            let temp = this._first[1];
+            if (this._first === this._last) {
+                this._first = this._last = null;
+            } else {
+                this._first = this._first[2];
+            }
+            return temp;
+        }
+    }
+    get last() {
+        if (this._last !== null) {
+            return this._last[1];
+        }
+    }
+    set last(v) {
+        if (this._last === null) {
+            this.push(v);
+        } else {
+            this._last[1] = v;
+        }
+    }
+    get first() {
+        if (this._first !== null) {
+            return this._first[1];
+        }
+    }
+    set first(v) {
+        if (this._first === null) {
+            this.unshift(v);
+        } else {
+            this._first[1] = v;
+        }
     }
 }
 
