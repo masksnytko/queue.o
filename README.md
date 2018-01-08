@@ -10,10 +10,14 @@ const Queue = require('queue.o');
 var q = new Queue;
 
 q.push(1);
+q.first; //1
 q.unshift([2]);
 q.unshift([1, 2]);
 q.pop() //1
 q.pop() //[2]
 q.shift() //[1, 2]
+q.last; //[1, 2]
 q.pop() //undefined
+q.last = 1;
+q.first; //1
 ```
