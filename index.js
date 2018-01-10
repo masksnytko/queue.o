@@ -31,7 +31,7 @@ class Queue {
         }
     }
     shift() {
-        if (this.first !== null) {
+        if (this._first !== null) {
             let temp = this._first[1];
             if (this._first === this._last) {
                 this._first = this._last = null;
