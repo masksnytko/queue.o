@@ -41,6 +41,13 @@ class Queue {
             return temp;
         }
     }
+    forEach(cb) {
+        let temp = this._first;
+        while (temp !== null) {
+            cb(temp[1]);
+            temp = temp[2];
+        }
+    }
     get last() {
         if (this._last !== null) {
             return this._last[1];
