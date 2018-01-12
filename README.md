@@ -18,8 +18,7 @@ q.pop() //[2]
 q.shift() //[1, 2]
 q.last; //[1, 2]
 q.pop() //undefined
-q.last = 1;//set value
-q.first; //1
+q.last = 1; //set value
 q.push(2);
 
 q.forEach((v) => {
