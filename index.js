@@ -5,6 +5,13 @@ class Queue {
         this._first = null;
         this._last = null;
     }
+    *[Symbol.iterator]() {
+        let temp = this._first;
+        while (temp !== null) {
+            yield temp[1];
+            temp = temp[2];
+        }
+    }
     push(v) {
         if (this._last === null) {
             this._last = this._first = [null, v, null];
