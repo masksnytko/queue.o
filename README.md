@@ -1,8 +1,8 @@
-# queue
-speed queue node js javascript
-
 # install
 npm i queue.o
+
+# queue
+speed queue node js javascript
 
 ```js
 const Queue = require('queue.o');
