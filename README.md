@@ -3,6 +3,7 @@ npm i queue.o
 
 # queue
 fast queue
+
 all methods take O(1) 
 
 ```js
