@@ -2,7 +2,8 @@
 npm i queue.o
 
 # queue
-speed queue node js javascript
+fast queue
+all methods take O(1) 
 
 ```js
 const Queue = require('queue.o');
